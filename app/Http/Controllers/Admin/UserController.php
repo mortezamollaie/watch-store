@@ -22,7 +22,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.user.create');
     }
 
     /**
@@ -30,7 +30,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        User::query()->create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'mobile' => $request->input('mobile'),
+            'password' => $request->input('password'),
+            'phone' => "",
+        ]);
+
+        return redirect()->back()->with('message', 'کاربر جدید با موفقیت ثبت شد');
     }
 
     /**
