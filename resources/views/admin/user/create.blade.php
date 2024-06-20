@@ -2,13 +2,7 @@
 @section('content')
     <!-- begin::main content -->
     <main class="main-content">
-        <div class="row">
-            @if(\Illuminate\Support\Facades\Session::has('message'))
-                <div class="alert alert-info">
-                    <div>{{session('message')}}</div>
-                </div>
-            @endif
-        </div>
+        @include('admin.layouts.errors')
         <div class="card">
             <div class="card-body">
                 <div class="container">
