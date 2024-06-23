@@ -13,6 +13,7 @@
             <th class="text-center align-middle text-primary">نام دسته بندی</th>
             <th class="text-center align-middle text-primary">دسته پدر</th>
             <th class="text-center align-middle text-primary">ویرایش</th>
+            <th class="text-center align-middle text-primary">حذف</th>
             <th class="text-center align-middle text-primary">تاریخ ایجاد</th>
         </tr>
         </thead>
@@ -32,6 +33,11 @@
                         ویرایش
                     </a>
                 </td>
+                <td class="text-center align-middle">
+                    <a class="btn btn-outline-danger" href="{{route('category.destroy', $category->id)}}">
+                        حذف
+                    </a>
+                </td>
                 <td class="text-center align-middle">{{\Hekmatinasser\Verta\Verta::instance($category->created_at)->format('%B %d. %Y')}}</td>
             </tr>
         @endforeach
@@ -41,3 +47,25 @@
         {{$categories->appends(Request::except('page'))->links()}}
     </div>
 </div>
+
+@section('scripts')
+    <script>
+        window.addEventListener('deleteCategory',event=>{
+            Swal.fire({
+                text: "آیا از حذف دسته بندی مطمئن هستید؟",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'بله',
+                cancelButtonText: 'خیر'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'دسته بندی با موفقیت حذف شد'
+                    )
+                }
+            })
+        })
+    </script>
+@endsection

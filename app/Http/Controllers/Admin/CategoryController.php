@@ -54,7 +54,9 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = Category::query()->find($id);
+        $categories = Category::query()->pluck('title', 'id');
+        return view('admin.category.edit', compact('category', 'categories'));
     }
 
     /**
@@ -62,7 +64,19 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $category = Category::query()->find($id);
+        if($request->has('file')){
+            $image = Category::saveImage($request->file);
+        }else{
+            $image = $category->image;
+        }
+
+        $category->update([
+            "title" => $request->input('title'),
+            "parent_id" => $request->input('parent_id'),
+            "image" => $image,
+        ]);
+        return redirect()->route('category.index')->with('message', 'دسته بندی با موفقیت ویرایش شد');
     }
 
     /**
@@ -70,6 +84,6 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        dd('hi');
     }
 }

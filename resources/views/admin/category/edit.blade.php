@@ -6,37 +6,34 @@
         <div class="card">
             <div class="card-body">
                 <div class="container">
-                    <h6 class="card-title">ویرایش کاربر</h6>
-                    <form method="POST" action="{{route('users.update', $user->id)}}" enctype="multipart/form-data">
+                    <h6 class="card-title">ویرایش دسته بندی</h6>
+                    <form method="POST" action="{{route('category.update', $category->id)}}" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
                         <div>
                             <figure class="avatar avatar">
-                                <img src="{{url('images/admin/users/picture/'.$user->photo)}}" class="rounded-circle" alt="image">
+                                <img src="{{url('images/admin/categories/picture/'.$category->image)}}" class="rounded-circle" alt="image">
                             </figure>
                         </div>
                         <div class="form-group row">
-                            <label  class="col-sm-2 col-form-label">نام و نام خانوادگی</label>
+                            <label  class="col-sm-2 col-form-label">نام دسته بندی</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control text-left" dir="rtl" name="name" value="{{$user->name}}">
+                                <input type="text" class="form-control text-left" dir="rtl" name="title" value="{{$category->title}}">
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label  class="col-sm-2 col-form-label">ایمیل</label>
+                        <div class="form-group row" data-select2-id="23">
+                            <label class="col-sm-2 col-form-label">دسته پدر</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control text-left" dir="rtl" name="email" value="{{$user->email}}">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label  class="col-sm-2 col-form-label">موبایل</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control text-left" dir="rtl" name="mobile" value="{{$user->mobile}}">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label  class="col-sm-2 col-form-label">رمز عبور</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control text-left" dir="rtl" name="password">
+                                <select class="form-select" name="parent_id" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                                    <option selected="selected" value="0">دسته اصلی</option>
+                                    @foreach($categories as $key => $value)
+                                        @if($category->parent_id == $key)
+                                        <option selected="selected" value="{{$key}}">{{$value}}</option>
+                                        @else
+                                        <option value="{{$key}}">{{$value}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -53,4 +50,10 @@
             </div>
         </div>
     </main>
+@endsection
+
+@section('scripts')
+    <script>
+        $('.form-select').select2();
+    </script>
 @endsection

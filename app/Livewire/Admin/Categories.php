@@ -13,6 +13,22 @@ class Categories extends Component
     protected $paginationTheme = "bootstrap";
     public $search;
 
+    protected $listeners =[
+        'destroyCategory',
+        'refreshComponent'=>'$refresh'
+    ];
+
+    public function deleteCategory($id)
+    {
+        $this->dispatch('deleteCategory',['id'=>$id]);
+    }
+
+    public function destroyCategory($id)
+    {
+        Category::destroy($id);
+        $this->emit('refreshComponent');
+    }
+
     public function render()
     {
         $categories = Category::query()->

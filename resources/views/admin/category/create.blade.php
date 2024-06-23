@@ -21,7 +21,7 @@
                                 <select class="form-select" name="parent_id" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                                     <option selected="selected" value="0">دسته اصلی</option>
                                     @foreach($categories as $key => $value)
-                                        <option selected="selected" value="{{$key}}">{{$value}}</option>
+                                        <option value="{{$key}}">{{$value}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -44,6 +44,6 @@
 
 @section('scripts')
     <script>
-        $('form-select').select2();
+        $('.form-select').select2();
     </script>
 @endsection
