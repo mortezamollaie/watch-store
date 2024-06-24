@@ -44,10 +44,10 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+//    public function show(string $id)
+//    {
+//        dd("show");
+//    }
 
     /**
      * Show the form for editing the specified resource.
@@ -84,6 +84,6 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        dd('hi');
+        dd('delete');
     }
 }
