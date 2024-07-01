@@ -44,10 +44,11 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-//    public function show(string $id)
-//    {
-//        dd("show");
-//    }
+    public function show(string $id)
+    {
+        Category::destroy($id);
+        return redirect()->route('category.index');
+    }
 
     /**
      * Show the form for editing the specified resource.

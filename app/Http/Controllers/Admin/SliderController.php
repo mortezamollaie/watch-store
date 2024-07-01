@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SliderRequest;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 
@@ -23,14 +24,14 @@ class SliderController extends Controller
      */
     public function create()
     {
-        $title = 'ایجاد دسته بندی';
+        $title = 'ایجاد اسلایدر';
         return view('admin.slider.create', compact('title'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SliderRequest $request)
     {
         $image = Slider::saveImage($request->file);
         Slider::query()->create([
@@ -54,15 +55,31 @@ class SliderController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $title = 'ویرایش اسلایدر';
+        $slider = Slider::query()->find($id);
+        return view('admin.slider.edit', compact('title', 'slider'));
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(SliderRequest $request, string $id)
     {
-        //
+        $slider = Slider::query()->find($id);
+        if($request->has('file')){
+            $image = Slider::saveImage($request->file);
+        }else{
+            $image = $slider->image;
+        }
+
+        $slider->update([
+            'title'=> $request->input('title'),
+            'url'=> $request->input('url'),
+            'image' => $image,
+        ]);
+
+        return redirect()->route('sliders.index')->with('message', 'اسلایدر با موفقیت ویرایش شد');
     }
 
     /**
