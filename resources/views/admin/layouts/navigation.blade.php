@@ -55,11 +55,18 @@
                     <li><a href="{{route('category.create')}}">ایجاد دسته بندی</a></li>
                     <li><a href="{{route('category.index')}}">لیست دسته بندی ها</a></li>
                 </ul>
-            </li><li>
+            </li>
+            <li>
                 <a href="#">اسلایدر</a>
                 <ul>
                     <li><a href="{{route('sliders.create')}}">ایجاد اسلایدر</a></li>
-                    <li><a href="{{route('sliders.index')}}">لیست اسلایدر</a></li>
+                    <li><a href="{{route('sliders.index')}}">لیست اسلایدرها</a></li>
+                </ul>
+            </li><li>
+                <a href="#">برند</a>
+                <ul>
+                    <li><a href="{{route('brands.create')}}">ایجاد برند</a></li>
+                    <li><a href="{{route('brands.index')}}">لیست برندها</a></li>
                 </ul>
             </li>
         </ul>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PanelController;
 use App\Http\Controllers\Admin\UserController;
@@ -48,6 +49,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     /// ---- Product Routes ---- ///
     Route::resource('category', CategoryController::class);
     Route::resource('sliders', SliderController::class);
+    Route::resource('brands', BrandController::class);
  });
 
 
