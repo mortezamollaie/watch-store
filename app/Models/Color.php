@@ -12,4 +12,9 @@ class Color extends Model
     protected $fillable = [
         'title', 'code'
         ];
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'color_product');
+    }
 }

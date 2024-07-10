@@ -26,19 +26,19 @@
                 <td class="text-center align-middle">{{$products->firstItem() + $index}}</td>
                 <td class="text-center align-middle">
                     <figure class="avatar avatar">
-                        <img src="{{url('images/admin/products/big/'.$product->image)}}" class="rounded-circle" alt="image">
+                        <img src="{{url('images/admin/products/picture/'.$product->image)}}" class="rounded-circle" alt="image">
                     </figure>
                 </td>
                 <td class="text-center align-middle">{{$product->title}}</td>
                 <td class="text-center align-middle">{{$product->price}}</td>
                 <td class="text-center align-middle">{{$product->count}}</td>
                 <td class="text-center align-middle">
-                    <a class="btn btn-outline-info" href="{{route('create.product.galley',$product->id)}}">
+                    <a class="btn btn-outline-info">
                         گالری
                     </a>
                 </td>
                 <td class="text-center align-middle">
-                    <a class="btn btn-outline-info" href="{{route('create.product.properties',$product->id)}}">
+                    <a class="btn btn-outline-info">
                         ویژگی ها
                     </a>
                 </td>
