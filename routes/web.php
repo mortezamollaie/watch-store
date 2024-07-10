@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\PanelController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SliderController;
@@ -52,6 +53,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('sliders', SliderController::class);
     Route::resource('brands', BrandController::class);
     Route::resource('colors', ColorController::class);
+    Route::resource('products', ProductController::class);
  });
 
 

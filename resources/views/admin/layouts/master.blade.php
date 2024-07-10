@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="{{url('panel/vendors/select2/css/select2.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{url('panel/plugins/sweet_alert2/sweetalert2.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{url('panel/plugins/colorpicker/css/bootstrap-colorpicker.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{url('panel/plugins/datepicker/kamadatepicker.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{url('panel/plugins/dropzone/css/dropzone.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{url('css/custom.css')}}">
 </head>
 <body class="small-navigation">
 @include('admin.layouts.navigation')
