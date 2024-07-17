@@ -17,7 +17,7 @@
             <th class="text-center align-middle text-primary">ویژگی ها</th>
             <th class="text-center align-middle text-primary">ویرایش</th>
             <th class="text-center align-middle text-primary">حذف</th>
-            <th class="text-center align-middle text-primary">تاریخ ایجاد</th>
+            <th class="text-center align-middle text-primary">تاریخ ایجاد</th>w
         </tr>
         </thead>
         <tbody>
@@ -33,7 +33,7 @@
                 <td class="text-center align-middle">{{$product->price}}</td>
                 <td class="text-center align-middle">{{$product->count}}</td>
                 <td class="text-center align-middle">
-                    <a class="btn btn-outline-info">
+                    <a class="btn btn-outline-info" href="{{route('create.product.gallery', $product->id)}}">
                         گالری
                     </a>
                 </td>
