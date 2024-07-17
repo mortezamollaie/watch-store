@@ -6,7 +6,7 @@
             <div class="card-body">
                 <div class="container">
                     <h6 class="card-title">  ایجاد لیست تصاویر محصول {{$product->title}}</h6>
-                    <form method="POST" class="dropzone border border-primary" action="{{route('store.product.gallery', $product->id)}}"  >
+                    <form method="POST" class="dropzone border border-primary" action="{{route('store.product.gallery', $product->id)}}">
                         @csrf
                         <div class="form-group row">
                             <div class="fallback">
@@ -14,7 +14,7 @@
                             </div>
                         </div>
                     </form>
-{{--                    <livewire:admin.galleries :product_id="$id"/>--}}
+                    <livewire:admin.galleries :product_id="$id"/>
                 </div>
             </div>
         </div>
