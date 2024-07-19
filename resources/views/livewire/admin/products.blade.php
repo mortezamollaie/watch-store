@@ -33,7 +33,7 @@
                 <td class="text-center align-middle">{{$product->price}}</td>
                 <td class="text-center align-middle">{{$product->count}}</td>
                 <td class="text-center align-middle">
-                    <a class="btn btn-outline-info" href="{{route('create.product.gallery', $product->id)}}">
+                    <a class="btn btn-outline-info" href="">
                         گالری
                     </a>
                 </td>
