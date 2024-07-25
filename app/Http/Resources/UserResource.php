@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Resources\AddressResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -19,7 +20,7 @@ class UserResource extends JsonResource
             'name' => $this->name,
             'mobile' => $this->mobile,
             'phone' => $this->phone,
-            'addresses' => AddressResource::collection($this->addresses)->first(),
+            'addresses'=>AddressResource::collection($this->addresses)->first(),
         ];
     }
 }

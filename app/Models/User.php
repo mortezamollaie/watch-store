@@ -64,7 +64,7 @@ class User extends Authenticatable
         }
     }
 
-    public function addressed()
+    public function addresses()
     {
         return $this->hasMany(Address::class);
     }
@@ -77,11 +77,11 @@ class User extends Authenticatable
             'phone' => $request->input('phone'),
             'photo' => $image,
         ]);
-        $user->addressed()->create([
+        $user->addresses()->create([
             'address' => $request->input('address'),
             'postal_code' => $request->input('postal_code'),
             'lat' => $request->input('lat'),
-            'lang' => $request->input('long'),
+            'lang' => $request->input('lang'),
         ]);
     }
 }
