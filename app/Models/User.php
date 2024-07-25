@@ -63,4 +63,25 @@ class User extends Authenticatable
             return '';
         }
     }
+
+    public function addressed()
+    {
+        return $this->hasMany(Address::class);
+    }
+
+    public static function updateUserInfo($user, $request)
+    {
+        $image = self::saveImage($request->file);
+        $user->update([
+            'name' => $request->input('name'),
+            'phone' => $request->input('phone'),
+            'photo' => $image,
+        ]);
+        $user->addressed()->create([
+            'address' => $request->input('address'),
+            'postal_code' => $request->input('postal_code'),
+            'lat' => $request->input('lat'),
+            'lang' => $request->input('long'),
+        ]);
+    }
 }
