@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Resources\CategoryResource;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,25 +11,34 @@ class Category extends Model
     use HasFactory;
 
     protected $fillable = [
-      'title', 'image', 'parent_id'
+        'title', 'image', 'parent_id'
     ];
 
-    public function parent(){
+    public function parent()
+    {
         return $this->belongsTo(self::class, 'parent_id', 'id')
-            ->withDefault(['title'=>'------']);
+            ->withDefault(['title' => '------']);
     }
 
-    public function children(){
+    public function children()
+    {
         return $this->hasMany(self::class, 'parent_id', 'id');
     }
 
-    public static function saveImage($file){
-        if($file){
-            $name = time(). '.' . $file->extension();
+    public static function saveImage($file)
+    {
+        if ($file) {
+            $name = time() . '.' . $file->extension();
             $file->move(public_path('images/admin/categories/picture'), $name);
             return $name;
-        }else{
+        } else {
             return '';
         }
+    }
+
+    public static function getAllCategories()
+    {
+        $categories = self::query()->get();
+        return CategoryResource::collection($categories);
     }
 }
