@@ -7,7 +7,6 @@ use App\Http\Repositories\ProductRepository;
 use App\Http\services\Keys;
 use App\Models\Category;
 use App\Models\Slider;
-use Illuminate\Http\Request;
 
 class HomeApiController extends Controller
 {
