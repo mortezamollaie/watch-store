@@ -40,6 +40,11 @@ class Product extends Model
         return $this->belongsToMany(Color::class, 'color_product');
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public static function saveImage($file){
         if($file){
             $name = time(). '.' . $file->extension();
